@@ -1,14 +1,23 @@
 #二維清單 記帳
 
-#讀取檔案
+import os #operating system
+
 product = []
-with open('product.csv' , 'r' , encoding = 'utf-8') as f :
-	for line in f :
-		if '商品,價格' in line :
-			continue #跳到下一迴圈
-		name, price = line.strip().split(',')
-		product.append([name,price])
-print(product)
+#檢察檔案功能
+if os.path.isfile('product.csv'):
+	print('yes!')
+	
+#讀取檔案
+	with open('product.csv' , 'r' , encoding = 'utf-8') as f :
+		for line in f :
+			if '商品,價格' in line :
+				continue #跳到下一迴圈
+			name, price = line.strip().split(',')
+			product.append([name,price])
+	print(product)
+
+else :
+	print('no!')
 
 #讓使用者輸入商品價格
 while True :
